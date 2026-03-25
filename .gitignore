@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.idea/
+.vscode/
+
+# Model dumps (large binary files — add manually or use Git LFS)
+dumps/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Zip archives
+*.zip
+
+# PowerPoint files
+*.pptx
+
+# Old/loose root-level files
+BP dataset.csv
+BP.HTML
+bp.py
+blood_pressure.ipynb
+bp_model.ipynb
+bp_model-2.ipynb
+Testing.ipynb
+heart (2).csv
+BP_Model_extracted/

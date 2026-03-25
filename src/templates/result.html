@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction Result</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: #eef2f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      padding: 32px 16px;
+      color: #1a202c;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.08);
+      padding: 52px 44px 44px;
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+    }
+
+    /* ── Icon badge ── */
+    .result-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 24px;
+    }
+
+    .result-icon.high   { background: #fff5f5; }
+    .result-icon.normal { background: #f0fff4; }
+
+    /* ── Label above result ── */
+    .result-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #a0aec0;
+      margin-bottom: 8px;
+    }
+
+    /* ── Main result text ── */
+    .result-value {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+
+    .result-value.high   { color: #c53030; }
+    .result-value.normal { color: #276749; }
+
+    /* ── Status badge ── */
+    .badge {
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .badge.high   { background: #fff5f5; color: #c53030; border: 1px solid #fed7d7; }
+    .badge.normal { background: #f0fff4; color: #276749; border: 1px solid #c6f6d5; }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 0 0 24px;
+    }
+
+    /* ── Description ── */
+    .result-desc {
+      font-size: 0.9rem;
+      color: #4a5568;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    /* ── Back button ── */
+    .btn-back {
+      display: inline-block;
+      padding: 12px 32px;
+      background: #3182ce;
+      color: #fff;
+      border-radius: 11px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.18s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-back:hover { background: #2b6cb0; }
+
+    .disclaimer {
+      font-size: 0.72rem;
+      color: #b0bec5;
+      margin-top: 18px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  {% if prediction == 'High' %}
+
+    <div class="result-icon high">⚠️</div>
+    <div class="result-label">Prediction Result</div>
+    <div class="result-value high">High Blood Pressure</div>
+    <span class="badge high">Hypertension Risk Detected</span>
+    <hr class="divider">
+    <p class="result-desc">
+      Based on the values provided, the model predicts an elevated blood pressure risk.
+      This may indicate hypertension — please consult a healthcare professional for a proper clinical evaluation.
+    </p>
+
+  {% else %}
+
+    <div class="result-icon normal">✅</div>
+    <div class="result-label">Prediction Result</div>
+    <div class="result-value normal">Normal Blood Pressure</div>
+    <span class="badge normal">No Hypertension Risk Detected</span>
+    <hr class="divider">
+    <p class="result-desc">
+      Based on the values provided, the model predicts a normal blood pressure status.
+      Keep maintaining a healthy lifestyle — regular check-ups are still recommended.
+    </p>
+
+  {% endif %}
+
+  <a href="{{ url_for('index') }}" class="btn-back">← Check Another Patient</a>
+  <p class="disclaimer">For educational purposes only &mdash; not a substitute for medical advice.</p>
+
+</div>
+
+</body>
+</html>
